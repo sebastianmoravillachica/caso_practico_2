@@ -7,11 +7,9 @@ public interface UsuarioService {
 
     List<Usuario> listar();
 
+    Usuario obtener(Long id);
+
     void guardar(Usuario usuario);
 
     void eliminar(Long id);
-
-    Usuario obtener(Long id);
-
-    List<Usuario> buscarPorRol(String rol);
 }

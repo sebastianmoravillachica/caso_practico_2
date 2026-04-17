@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "usuario") // 
 public class Usuario {
 
     @Id
@@ -12,20 +13,24 @@ public class Usuario {
 
     private String nombre;
 
-    @Column(unique = true)
     private String email;
 
     private String password;
 
-    private boolean activo;
+    private Boolean activo;
 
+    @Column(name = "fecha_creacion")
     private LocalDateTime fechaCreacion;
 
     @ManyToOne
     @JoinColumn(name = "rol_id")
     private Rol rol;
 
-    // Getters y Setters
+   
+    public Usuario() {
+    }
+
+   
 
     public Long getId() {
         return id;
@@ -59,11 +64,11 @@ public class Usuario {
         this.password = password;
     }
 
-    public boolean isActivo() {
+    public Boolean getActivo() {
         return activo;
     }
 
-    public void setActivo(boolean activo) {
+    public void setActivo(Boolean activo) {
         this.activo = activo;
     }
 

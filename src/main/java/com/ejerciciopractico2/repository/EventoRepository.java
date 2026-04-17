@@ -8,9 +8,12 @@ import java.util.List;
 
 public interface EventoRepository extends JpaRepository<Evento, Long> {
 
+    
     List<Evento> findByActivo(boolean activo);
 
-    List<Evento> findByNombreContaining(String nombre);
-
+    
     List<Evento> findByFechaBetween(LocalDate inicio, LocalDate fin);
+
+    
+    List<Evento> findByNombreContaining(String nombre);
 }

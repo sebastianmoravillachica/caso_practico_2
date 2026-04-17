@@ -1,6 +1,7 @@
 package com.ejerciciopractico2.controller;
 
 import com.ejerciciopractico2.domain.Usuario;
+import com.ejerciciopractico2.domain.Rol;
 import com.ejerciciopractico2.service.UsuarioService;
 import com.ejerciciopractico2.repository.RolRepository;
 
@@ -33,8 +34,13 @@ public class UsuarioController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@ModelAttribute Usuario usuario) {
+    public String guardar(@RequestParam Long rol, Usuario usuario) {
+
+        Rol rolObj = rolRepository.findById(rol).orElse(null);
+        usuario.setRol(rolObj);
+
         usuarioService.guardar(usuario);
+
         return "redirect:/usuarios";
     }
 

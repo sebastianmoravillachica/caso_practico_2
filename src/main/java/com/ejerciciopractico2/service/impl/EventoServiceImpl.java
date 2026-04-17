@@ -21,6 +21,11 @@ public class EventoServiceImpl implements EventoService {
     }
 
     @Override
+    public Evento obtener(Long id) {
+        return eventoRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public void guardar(Evento evento) {
         eventoRepository.save(evento);
     }
@@ -28,10 +33,5 @@ public class EventoServiceImpl implements EventoService {
     @Override
     public void eliminar(Long id) {
         eventoRepository.deleteById(id);
-    }
-
-    @Override
-    public Evento obtener(Long id) {
-        return eventoRepository.findById(id).orElse(null);
     }
 }
